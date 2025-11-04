@@ -1,12 +1,12 @@
 <%-- 
-    Document   : index
-    Created on : 30 oct. 2025, 8:11:52
+    Document   : eliminar
+    Created on : 4 nov. 2025, 8:04:42
     Author     : PC-11
 --%>
 
 <html>
     <head>
-        <title>Pagina  Guzman Aplicacion WEB </title>
+        <title>Pagina Eliminar Usuario Guzman Aplicacion WEB JSP  </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-----------------------------BOOTSTRAP----------------------------->
@@ -82,7 +82,6 @@
                 </header>
 <!-- /HEADER ------------------------------------------------------------------->
 
-
 <!-- NAVIGATION ---------------------------------------------------------------->
                 <nav id="navigation">
                         <!-- container -->
@@ -113,55 +112,51 @@
                 </nav>
 <!-- /NAVIGATION --------------------------------------------------------------->
 
-<br>
-        <div class="container">
-            <center>
-             
-                <div class="thumbnail">
-                   
-                </div>
-                <h4>LISTA OFICIAL DE USARIOS DE SISTEMA GUZMAN </h4>
-                <br>
-            </center>  
-                <%@include file="conexion.jsp"%> <!-- /LLAMADA A LA CONEXION  DE DATOS -->
-               
-                <div class="row col-md-12" >
-                <table class="table table-striped table-bordered table-hover" style="text-align: center">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">ID</th>
-                            <th style="text-align: center">Usuario</th>
-                            <th style="text-align: center">Password</th>
-                           
-                            <th style="text-align: center">Operaciones</th>
-                            <th style="text-align: center">Operaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       
-                        <%
-                          st=conexion.prepareStatement("select * from tusuarios");
-                          rs=st.executeQuery();
-                          while(rs.next()){//inicia while
-                        %>  
-                        <tr>
-                            <td><%=rs.getString("id_usuario")%></td>
-                            <td><%=rs.getString("usuario")%></td>
-                            <td><%=rs.getString("password")%></td>
-                            
-                            <td><a class="btn btn-danger" href="eliminar.jsp?id_usuario=<%=rs.getString("id_usuario")%>">Eliminar</a></td>
-                            <td><a class="btn btn-info" href="editarAlumno.jsp?id_usuario=<%= rs.getString(1)%>&usuario=<%= rs.getString(2)%>&password=<%= rs.getString(3)%>">Editar</a></td>
-                        </tr>
-                        <%
-                          }//termina while  
-                        %>
-                    </tbody>
-                </table>
-            </div>
-        </div>            
-                    
-    <center>  <h4>Fecha y hora del sistema : <%= new java.util.Date() %></h4></center>   
+<%
+            int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        %>    
+<!----------------------------- FORMULARIO IS ALUMNO -->
 
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <form method="post" action="eliminarAlumno.jsp">
+            <!-- row -->
+            <div class="row">
+                <!-- Order Details -->
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4 order-details">
+                    <div class="section-title text-center">
+                        <a class="logo">
+                            <img src="./img/icon/inisesionalum2.jpg" alt="">
+                        </a>
+                        <br>
+                        <h3 class="title">Eliminar Alumno</h3>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirma Id usuario a Borrar</label>
+                        <input class="input" type="text" value="<%= id_usuario%>" required name="id_usuario">
+                    </div>
+                    <center><input type="submit" class="primary-btn order-submit" name="btnEliminar" value="Eliminar"></center>
+                </div>
+                <!-- /Order Details -->
+            </div>
+            <!-- /row -->
+        </form>
+    </div>
+    <!-- /container -->
+    <div>
+        <p><center>¿Quieres cancelar? Presiona <a href="index.jsp">Aquí</a></center></p>
+    </div>
+</div>
+<!-- /SECTION -->
+
+<!----------------------------- / FORMULARIO IS ALUMNO -->
+<br><!-- comment -->
+<center>  <h4>Fecha y hora del sistema : <%= new java.util.Date() %></h4></center> 
 
 
 
@@ -272,4 +267,3 @@
                
     </body>
 </html>
-

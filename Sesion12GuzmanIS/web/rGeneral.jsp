@@ -1,12 +1,12 @@
 <%-- 
-    Document   : index
-    Created on : 30 oct. 2025, 8:11:52
+    Document   : rGeneral
+    Created on : 4 nov. 2025, 7:40:10
     Author     : PC-11
 --%>
 
 <html>
     <head>
-        <title>Pagina  Guzman Aplicacion WEB </title>
+        <title>Pagina Registro Usuario Guzman Aplicacion WEB JSP </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-----------------------------BOOTSTRAP----------------------------->
@@ -56,7 +56,7 @@
                                                         <div class="header-ctn">
                                                                 <div class="container">
                                                                 <ul class="header-links pull-right">                
-                                                                <li><a href="index.jsp"><i class="fa fa-user-o"></i>Iniciar Sesión</a></li>
+                                                                <li><a href="index.html"><i class="fa fa-user-o"></i>Iniciar Sesión</a></li>
                                                                 <li><a href="rGeneral.jsp"><i class="fa fa-check"></i>Registrarme</a></li>
                                                                 </ul>
 
@@ -81,7 +81,6 @@
                         <!-- /MAIN HEADER -->
                 </header>
 <!-- /HEADER ------------------------------------------------------------------->
-
 
 <!-- NAVIGATION ---------------------------------------------------------------->
                 <nav id="navigation">
@@ -112,56 +111,35 @@
                         <!-- /container -->
                 </nav>
 <!-- /NAVIGATION --------------------------------------------------------------->
-
-<br>
-        <div class="container">
-            <center>
-             
-                <div class="thumbnail">
-                   
-                </div>
-                <h4>LISTA OFICIAL DE USARIOS DE SISTEMA GUZMAN </h4>
-                <br>
-            </center>  
-                <%@include file="conexion.jsp"%> <!-- /LLAMADA A LA CONEXION  DE DATOS -->
-               
-                <div class="row col-md-12" >
-                <table class="table table-striped table-bordered table-hover" style="text-align: center">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">ID</th>
-                            <th style="text-align: center">Usuario</th>
-                            <th style="text-align: center">Password</th>
-                           
-                            <th style="text-align: center">Operaciones</th>
-                            <th style="text-align: center">Operaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       
-                        <%
-                          st=conexion.prepareStatement("select * from tusuarios");
-                          rs=st.executeQuery();
-                          while(rs.next()){//inicia while
-                        %>  
-                        <tr>
-                            <td><%=rs.getString("id_usuario")%></td>
-                            <td><%=rs.getString("usuario")%></td>
-                            <td><%=rs.getString("password")%></td>
-                            
-                            <td><a class="btn btn-danger" href="eliminar.jsp?id_usuario=<%=rs.getString("id_usuario")%>">Eliminar</a></td>
-                            <td><a class="btn btn-info" href="editarAlumno.jsp?id_usuario=<%= rs.getString(1)%>&usuario=<%= rs.getString(2)%>&password=<%= rs.getString(3)%>">Editar</a></td>
-                        </tr>
-                        <%
-                          }//termina while  
-                        %>
-                    </tbody>
-                </table>
-            </div>
-        </div>            
-                    
-    <center>  <h4>Fecha y hora del sistema : <%= new java.util.Date() %></h4></center>   
-
+<br><br><br>
+  <!--Formulario alta-->
+  <div class="container">
+      <div class="container">
+          <div class="order-details">
+              <div class="row"><!--Inicia fila-->
+                  <form method="post" action="rAlumno1.jsp">
+                      <div class="row">
+                          <center>
+                              <h3>ALTA USUARIO GUZMAN</h3>
+                              <img src="./img/icon/inisesionalum2.jpg"/>
+                        
+                          <div class="col-sm-6">
+                              <label>Usuario</label>
+                              <input class="input" type="text" placeholder="Usuario" required name="usuario"/>
+                              <label>Contraseña</label>
+                              <input class="input" type="password" placeholder="Password" required name="contrase"/>
+                              <br><br><!-- 2 saltos de linea -->
+                              <input type="submit" class="primary-btn order-submit" value="Registrarme"/>
+                          </div>
+                         </center>  
+                      </div>
+                      
+                  </form>
+              </div><!--/Termina fila-->
+          </div>
+      </div>
+  </div> 
+  <!--/Formulario alta-->
 
 
 
@@ -272,4 +250,3 @@
                
     </body>
 </html>
-
